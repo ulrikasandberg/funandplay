@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  background-color: #330033;
+  color: #333333;
+  font-family: Optima, helvetica, sans-serif;
+  font-size: 1em;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: #666666;
+}

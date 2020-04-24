@@ -1,4 +1,10 @@
+.app-content-area {
+  width: 100%;
+}
+
 h1 {
-  color: #ff00ff;
+  color: #ffaaff;
+  font-family: "Brush Script MT", helvetica, sans-serif;
   font-size: 30px;
+  padding-left: 10px;
 }

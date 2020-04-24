@@ -1,6 +1,14 @@
-<p>{{description}}</p>
-<div>
-  <ul>
-    <li *ngFor="let channel of channels">{{channel.name}} {{channel.channeltype}}</li>
-  </ul>
+<div class="ch-list-body">
+  <p>{{description}}</p>
+  <p class="data-source-info" *ngIf="this.copyright">
+    Datakälla: <a href="https://sverigesradio.se/">Sveriges Radio</a> {{copyright}}
+  </p>
+  <table class='ch-list'>
+    <tr *ngFor="let channel of channels">
+      <td class="ch-image"><img src="{{channel.image}}" alt="{{channel.name}}" /></td>
+      <td class="ch-name">{{channel.name}}<br/><span [className]="channel.channeltype === 'Rikskanal' ? 'ch-type national' : 'ch-type local'"> {{channel.channeltype}} </span></td>
+      <!--<td><a href="{{channel.siteurl}}" target="_blank">Länk</a></td>-->
+      <td>{{channel.tagline}}</td>
+    </tr>
+  </table>
 </div>

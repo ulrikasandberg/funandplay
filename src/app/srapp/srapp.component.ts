@@ -10,7 +10,8 @@ import { Channel } from '../channel';
 export class SrappComponent implements OnInit {
 
   description = 'Listar alla radiokanaler.'
-  channels:Channel[];
+  channels: Channel[];
+  copyright: string;
 
   constructor(private srappService: SrappService) {
 
@@ -21,7 +22,12 @@ export class SrappComponent implements OnInit {
   }
 
   getChannels(): void {
-    this.srappService.getChannels().subscribe(channels => this.channels = channels);
+    this.srappService.getChannels().subscribe(channels => this.test(channels));
+  }
+
+  test(channels): void {
+    this.channels = channels.result,
+    this.copyright = channels.copyright
   }
 
 }

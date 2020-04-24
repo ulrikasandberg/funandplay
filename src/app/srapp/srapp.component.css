@@ -1,0 +1,50 @@
+.ch-list-body {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.data-source-info {
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+table.ch-list {
+  width: 95%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+table.ch-list td {
+  border-bottom: 1px #333333 solid;
+  height: 60px;
+}
+
+td.ch-image img {
+  height: 50px;
+  width: 50px;
+}
+
+td.ch-name {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding-left: 10px;
+  width: 20%;
+}
+
+.ch-type {
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 0.6em;
+  font-style: italic;
+  font-weight: normal;
+  padding: 0 3px;
+}
+
+.national {
+  background-color: #007799;
+}
+
+.local {
+  background-color: #990099;
+}

@@ -4,27 +4,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Channel } from './channel';
-import { CHANNELS } from './mock-channels';
 import { MessageService } from './message.service';
+import { URL } from './url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SrappService {
 
-  private channelUrl = 'http://api.sr.se/api/v2/channels?format=json';
-
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
-  getChannels(): Observable<Channel[]> {
-    // TODO: send the message _after_ fetching the channels
-    this.messageService.add('SrappService: hämtade radiokanaler');
-    return this.http.get<Channel[]>(this.channelUrl)
+  getChannels(): Observable<Object> {
+    return this.http.get<Object>(URL.channelUrl)
       .pipe(
-        map(channels => this.handleSuccess(channels)),
-        //map(x => console.log(x)),
+        map(response => this.handleSuccess(response)),
         tap(_ => this.log('Hämtade radiokanaler')),
-        catchError(this.handleError<Channel[]>('getChannels', []))
+        catchError(this.handleError<Object>('getChannels', {}))
       );
   }
 
@@ -41,14 +36,15 @@ export class SrappService {
     }
   }
 
-  private handleSuccess(response) {
-    var result = [],
-      i,
-      channels;
+  private handleSuccess(response): Object {
+    let result: Channel[] = [],
+      i: number,
+      channels,
+      copyright: string;
 
-    console.log(response);
     if(response && response.channels) {
       channels = response.channels;
+      copyright = response.copyright;
 
       for(i = 0; i < channels.length; i++) {
         result.push({
@@ -61,6 +57,6 @@ export class SrappService {
         });
       }
     }
-    return result;
+    return {result: result, copyright: copyright};
   }
 }
